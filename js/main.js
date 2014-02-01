@@ -9,7 +9,7 @@ window.onload = function () {
     
     console.log("YYY");
 	MIDI.loadPlugin({
-		soundfontUrl: "./soundfont/",
+		soundfontUrl: "./midi/soundfont/",
 		instrument: "acoustic_grand_piano",
 		callback: function() {
 		    console.log("XXX");
