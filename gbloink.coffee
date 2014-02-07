@@ -94,8 +94,8 @@ class @Ball
 
     move:(otherBalls,blocks) ->        
         tx = @x+@dx
-        ty = @y+@dy                
-                
+        ty = @y+@dy
+
         flag = false
         if (tx<3) or (tx>597)
             @dx = -@dx
@@ -110,26 +110,40 @@ class @Ball
         if flag
             return
                     
-        # balls collide other balls ... not working
+        # balls collide other balls
         for another in otherBalls
             if another.id == @id 
                 continue
-            if another.hit(tx,@y)                
-                @dx = -@dx
-                @note()                
-            if another.hit(@y,ty)
-                @dy = -@dy
-                @note()                
-        
-        
+            if another.hit(tx,@y,@rad)
+                if another.x < @x 
+                    @dx = Math.abs(@dx)
+                else            
+                    @dx = -Math.abs(@dx)
+                @note()
+                flag = true
+                continue
+                
+            if another.hit(@x,ty,@rad)
+                if another.y < @y
+                    @dy = Math.abs(@dy)
+                else
+                    @dy = -Math.abs(@dy)
+                @note()
+                flag = true
+
+        #if flag
+        #    return
+
+        # balls collide with blocks
         for b in blocks
             if b.hit(tx+@dx,ty)
                 @dx = -@dx
-                @note()                
-                
+                @note()
+                                 
             if b.hit(tx,ty+@dy)
                 @dy = -@dy
                 @note()
+
 
         @x = tx
         @y = ty                
@@ -150,7 +164,7 @@ class @Ball
         canvas.ctx.fill();
         canvas.ctx.stroke();
                 
-    hit:(x,y) -> dist(x,y,@x,@y) < @rad+@rad
+    hit:(x,y,rad) -> dist(x,y,@x,@y) < @rad+rad
         
 class @Block
     constructor:(@x,@y) ->

@@ -164,13 +164,24 @@
         if (another.id === this.id) {
           continue;
         }
-        if (another.hit(tx, this.y)) {
-          this.dx = -this.dx;
+        if (another.hit(tx, this.y, this.rad)) {
+          if (another.x < this.x) {
+            this.dx = Math.abs(this.dx);
+          } else {
+            this.dx = -Math.abs(this.dx);
+          }
           this.note();
+          flag = true;
+          continue;
         }
-        if (another.hit(this.y, ty)) {
-          this.dy = -this.dy;
+        if (another.hit(this.x, ty, this.rad)) {
+          if (another.y < this.y) {
+            this.dy = Math.abs(this.dy);
+          } else {
+            this.dy = -Math.abs(this.dy);
+          }
           this.note();
+          flag = true;
         }
       }
       for (_j = 0, _len1 = blocks.length; _j < _len1; _j++) {
@@ -208,8 +219,8 @@
       return canvas.ctx.stroke();
     };
 
-    Ball.prototype.hit = function(x, y) {
-      return dist(x, y, this.x, this.y) < this.rad + this.rad;
+    Ball.prototype.hit = function(x, y, rad) {
+      return dist(x, y, this.x, this.y) < this.rad + rad;
     };
 
     return Ball;
