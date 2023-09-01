@@ -9,7 +9,7 @@ First draft, thanks to MudCube's fantastic MIDI.js library.
 What the Hell?
 ==============
 
-[Try it here](http://gbloink.com/alpha/)
+[Try it here](http://gbloink.com/bs/assets/alpha/index.html)
 
 [Main Site](http://gbloink.com)
 
