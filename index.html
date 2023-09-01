@@ -13,140 +13,98 @@
     <link href="gbloink.css" rel="stylesheet" type="text/css">  
     
 </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="#"><img src="img/gbloinklogo.png"/></a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="active"><a href="http://gbloink.com">Home</a></li>
-                            <li><a href="http://thoughtstorms.info/view/gbloink">Gbloink! on ThoughtStorms</a></li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
-                </div>
+<body>
+    <nav>
+        <img src="img/gbloinklogo.png" alt="gbloink!">
+
+        <a href="http://gbloink.com">Home</a> | 
+        <a href="http://thoughtstorms.info/view/gbloink">Gbloink! on ThoughtStorms</a>
+    </nav>
+    <main>
+    <section id="play-area">
+        <canvas id="canvasId" width="600" height="400"></canvas>
+    </section>
+    <section id="controls">
+        <div id="controls">
+            <h4>Balls</h4>
+            <div id="redcontrol">
+                <label>Speed:</label>
+                <canvas id="redball_speed" class="control_bar" width="170" height="20"></canvas>
+                <label>Volume:</label>
+                <canvas id="redball_volume" class="control_bar" width="170" height="20"></canvas>
+                <label>Instrument:</label>
+                <canvas id="redball_instrument" class="control_bar" width="170" height="20"></canvas>
+                <label>Delay:</label>
+                <canvas id="redball_delay" class="control_bar" width="170" height="20"></canvas>
+            </div>
+            <div id="greencontrol">
+                <label>Speed:</label>
+                <canvas id="greenball_speed" class="control_bar" width="170" height="20"></canvas>
+                <label>Volume:</label>
+                <canvas id="greenball_volume" class="control_bar" width="170" height="20"></canvas>
+                <label>Instrument:</label>
+                <canvas id="greenball_instrument" class="control_bar" width="170" height="20"></canvas>
+                <label>Delay:</label>
+                <canvas id="greenball_delay" class="control_bar" width="170" height="20"></canvas>
+            </div>
+            <div id="bluecontrol">
+                <label>Speed:</label>
+                <canvas id="blueball_speed" class="control_bar" width="170" height="20"></canvas>
+                <label>Volume:</label>
+                <canvas id="blueball_volume" class="control_bar" width="170" height="20"></canvas>
+                <label>Instrument:</label>
+                <canvas id="blueball_instrument" class="control_bar" width="170" height="20"></canvas>
+                <label>Delay:</label>
+                <canvas id="blueball_delay" class="control_bar" width="170" height="20"></canvas>
             </div>
         </div>
+        
+        <h4>Control</h4>
+        <div>
+            <button id="startButton"><img src="img/play.png" /></button>
+            <button id="stopButton"><img src="img/pause.png" /></button>
+        </div>
+        <br />&nbsp;<br />
+        <div>
+            <input type="radio" checked name="scale" value="major" onClick="noteCalculator.setCurrent('major');" />Major<br />
+            <input type="radio" name="scale" value="minor" onClick="noteCalculator.setCurrent('minor');" />Minor<br />
+            <input type="radio" name="scale" value="diminished" onClick="noteCalculator.setCurrent('diminished');" />Diminished<br />
+            <input type="radio" name="scale" value="pent1" onClick="noteCalculator.setCurrent('pent1');">Pentatonic 1<br />
+            <input type="radio" name="scale" value="pent2" onClick="noteCalculator.setCurrent('pent2');">Pentatonic 2<br />
+            <input type="radio" name="scale" value="arab" onClick="noteCalculator.setCurrent('arab');" />Arab<br />
+            <input type="radio" name="scale" value="gypsy" onClick="noteCalculator.setCurrent('gypsy');" />Gypsy<br />
+            <input type="radio" name="scale" value="debussy" onClick="noteCalculator.setCurrent('debussy');" />Debussy<br />
+            <input type="radio" name="scale" value="chromatic" onClick="noteCalculator.setCurrent('chromatic');" />Chromatic<br />
+        </div>
+    </main>
 
-        <div class="container">
 
-            <div class="row">
-                <div class="span12">
-                    <h2>Gbloink! ... in the browser!</h2>
-                    <p>How to play : three balls bounce around the black "play area". Click to add obstacles or click on obstacles to remove them again. When the balls hit obstacles, they play notes. Constrain the notes into particular scales with the radio-buttons on the side. Adjust the speed or volume of each ball by clicking somewhere along the bars.</p>  
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="span6">
-                   <canvas id="canvasId" width="600" height="400" style="border:1px solid #000000; "></canvas>
-                </div>
-                <div class="span3">
-                    
-                    <div id="controls">
-                        <h4>Balls</h4>
-                        <div id="redcontrol">
-                            <label>Speed:</label><canvas id="redball_speed" class="control_bar" width="170" height="20" ></canvas>
-                            <label>Volume:</label><canvas id="redball_volume" class="control_bar" width="170" height="20"></canvas>        
-                        </div>
+ 
 
-                        <div id="greencontrol">
-                            <label>Speed:</label><canvas id="greenball_speed" class="control_bar" width="170" height="20" ></canvas>
-                            <label>Volume:</label><canvas id="greenball_volume" class="control_bar" width="170" height="20"></canvas>        
-                        </div>
+    <script>
+        var game;
 
-                        <div id="bluecontrol">
-                            <label>Speed:</label><canvas id="blueball_speed" class="control_bar" width="170" height="20" ></canvas>
-                            <label>Volume:</label><canvas id="blueball_volume" class="control_bar" width="170" height="20"></canvas>        
-                        </div>
+        window.onload = function () {
+            game = new Game("canvasId", MIDI);
+            noteCalculator.setCurrent("major");
 
-                    </div>
-                </div>
-                <div class="span3">
-                    <h4>Control</h4>
-                    <div>
-                    <button onclick="scheduler.stop();"><img src="./midi/images/pause.png"/></button>
-                    <button onclick="scheduler.start();"><img src="./midi/images/play.png"/></button>                            
-                    </div>
-                    
-                    <br/>&nbsp;<br/> 
-                    <div>
-                    <input type="radio" checked name="scale" value="major" onClick="noteCalculator.setCurrent('major');"/>Major<br/>  
-                    <input type="radio" name="scale" value="minor" onClick="noteCalculator.setCurrent('minor');"/>Minor<br/>
-                    <input type="radio" name="scale" value="diminished" onClick="noteCalculator.setCurrent('diminished');"/>Diminished<br/>
-                    <input type="radio" name="scale" value="pent1" onClick="noteCalculator.setCurrent('pent1');">Pentatonic 1</br>
-                    <input type="radio" name="scale" value="pent2" onClick="noteCalculator.setCurrent('pent2');">Pentatonic 2</br>
-                    <input type="radio" name="scale" value="arab" onClick="noteCalculator.setCurrent('arab');"/>Arab<br/>
-                    <input type="radio" name="scale" value="gypsy" onClick="noteCalculator.setCurrent('gypsy');"/>Gypsy<br/>
-                    <input type="radio" name="scale" value="debussy" onClick="noteCalculator.setCurrent('debussy');"/>Debussy<br/>        
-                    <input type="radio" name="scale" value="chromatic" onClick="noteCalculator.setCurrent('chromatic');"/>Chromatic<br/>
-                    </div>
-                </div>
+ 
+            // You can add any other initialization code here
+            // For example, setting up the TinySynth library
 
-            </div>
-            
-            <div class="row">
-                <div class="span12">
-                    
-                </div>
-            </div>        
+            setInterval(() => game.next(), 50);
 
-            <div class="row">
-                <div class="span12">
-                    <h3>About</h3>
-                    <p>Please note, this is pretty experimental. Currently reported working : Firefox, Chrome on Ubuntu/Linux, Chrome on Windows, Android (in Portrait mode). Safari on Mac kind of works, except it screws up if you scroll the page. </p>
+            document.getElementById('startButton').addEventListener('click', function () {
+                // Implement your start game logic here
+            });
 
-                    <p>Gbloink! was originally written by me (<a href="http://synaesmedia.net">Phil Jones</a>, <a href="https://twitter.com/interstar">@interstar</a>) as a Windows program in 1997. I've been waiting about 15 years for the browser to be able to reliably do this. Maybe its time has finally come. </p>
-                    <p>Links :
-                    <ul>
-                        <li><a href="http://gbloink.com">Current Gbloink! site</a></li>
-                        <li>More about Gbloink! <a href="http://thoughtstorms.info/view/gbloink/view/whygbloinkisinteresting">on my wiki</a>.</li>
-                        <li>Source <a href="https://github.com/interstar/gbloink">on GitHub</a></li>
-                        <li>Gbloink! in the browser was made possible by the amazing <a href="https://github.com/mudcube/MIDI.js">MIDI.js library</a> from <a href="http://mudcu.be/">MudCube</a></li>
-                        
-                    </ul>
+            document.getElementById('stopButton').addEventListener('click', function () {
+                // Implement your stop game logic here
+            });
+        };
+    </script>
+</body>
 
-                    </p>
-
-                </div>
-            </div>
-
-            <hr>
-
-            <footer>
-                    <p>&copy; Synaesmedia 1997-2014, released under GPL 3.0</p>
-            </footer>
-
-        </div> <!-- /container -->
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-
-        <script src="js/vendor/bootstrap.min.js"></script>
-
- <!-- midi.js package -->
-         <script src="./midi/js/MIDI/AudioDetect.js" type="text/javascript"></script>
-         <script src="./midi/js/MIDI/LoadPlugin.js" type="text/javascript"></script>
-         <script src="./midi/js/MIDI/Plugin.js" type="text/javascript"></script>
-         <script src="./midi/js/MIDI/Player.js" type="text/javascript"></script>
-         <script src="./midi/js/Window/DOMLoader.XMLHttp.js" type="text/javascript"></script>
-         <script src="./midi/js/Window/DOMLoader.script.js" type="text/javascript"></script>
-         <!-- extras -->
-         <script src="./midi/inc/Base64.js" type="text/javascript"></script>
-         <script src="./midi/inc/base64binary.js" type="text/javascript"></script>
-
-         <script src="./isScheduler.js" type="text/javascript"></script> 
-         <script src="./gbloink.js" type="text/javascript"></script>
-
-        <script src="js/main.js"></script>
-    </body>
 </html>
+
