@@ -169,7 +169,7 @@ let COUNTER = 0;
 
 // Class representing a ball on the canvas
 class Ball {
-    constructor(x, y, colour, MIDI) {
+    constructor(x, y, colour, width, height, MIDI) {
         this.x = x;
         this.y = y;
         this.colour = colour;
@@ -178,6 +178,8 @@ class Ball {
         this.dx = 2;
         this.dy = 2;
         this.rad = 5;
+        this.width = width;
+        this.height = height;
         this.volume = 50;
         this.delay = 0.5; // default delay
         COUNTER += 1;
@@ -188,13 +190,13 @@ class Ball {
         let ty = this.y + this.dy;
         let flag = false;
 
-        if (tx < 3 || tx > 597) {
+        if (tx < 3 || tx > this.width-3) {
             this.dx = -this.dx;
             this.note();
             flag = true;
         }
 
-        if (ty < 3 || ty > 397) {
+        if (ty < 3 || ty > this.height-3) {
             this.dy = -this.dy;
             this.note();
             flag = true;
@@ -324,9 +326,9 @@ class Game {
         this.canvas = new Html5Canvas(canvasId, 800, 400);
         this.MIDI = MIDI;
         this.balls = [
-            new Ball(200, 200, '#ff0000', this.MIDI),
-            new Ball(300, 200, '#00ff00', this.MIDI),
-            new Ball(400, 200, '#0000ff', this.MIDI),
+            new Ball(200, 200, '#ff0000', 800, 400, this.MIDI),
+            new Ball(300, 200, '#00ff00', 800, 400, this.MIDI),
+            new Ball(400, 200, '#0000ff', 800, 400, this.MIDI),
         ];
         this.blocks = [];
         this.canvasId = canvasId;
