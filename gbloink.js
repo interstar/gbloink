@@ -175,8 +175,8 @@ class Ball {
         this.colour = colour;
         this.MIDI = MIDI;
         this.id = COUNTER;
-        this.dx = 3;
-        this.dy = 3;
+        this.dx = 2;
+        this.dy = 2;
         this.rad = 5;
         this.volume = 50;
         this.delay = 0.5; // default delay

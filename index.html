@@ -21,6 +21,11 @@
         <a href="http://gbloink.com">Home</a> | 
         <a href="http://thoughtstorms.info/view/gbloink">Gbloink! on ThoughtStorms</a>
     </nav>
+    
+    <header>
+        <h2>Gbloink! ... in the browser!</h2>
+    </header>
+    
     <main>
     <section id="play-area">
         <canvas id="canvasId" width="600" height="400"></canvas>
@@ -79,7 +84,27 @@
         </div>
     </main>
 
-
+    <footer>
+        <section id="about">
+            <h2>About</h2>
+            <p>
+                Gbloink! is an interactive musical game. As the balls move around the screen and collide with the walls and blocks, they play musical notes. You can control the speed of each ball, and the instrument, volume and note-length of each corresponding synth. 
+            </p>
+            <p>    
+                And you can add and remove blocks by clicking on the canvas.
+            </p>
+            <p>Please note, this is pretty experimental. </p>
+            <h3>Further Reading</h3>
+            <ul>
+                <li><a href="http://gbloink.com">Current Gbloink! site</a></li>
+                <li>More about Gbloink! <a href="http://thoughtstorms.info/view/WhyGbloinkIsInteresting">on my wiki</a>.</li>
+                <li>Source <a href="https://github.com/interstar/gbloink">on GitHub</a></li>
+                <li>The new multi-timbral Gbloink! is made possible by <a href="https://github.com/g200kg/webaudio-tinysynth">WebAudioTinySynth</a></li>
+                <li>and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a></li>
+            </ul>
+            <p>© Synaesmedia 1997-2023, released under GPL 3.0</p>
+        </section>
+    </footer>
  
 
     <script>
@@ -93,14 +118,17 @@
             // You can add any other initialization code here
             // For example, setting up the TinySynth library
 
-            setInterval(() => game.next(), 50);
+            intervalId = setInterval(() => game.next(), 50);
 
             document.getElementById('startButton').addEventListener('click', function () {
                 // Implement your start game logic here
+                clearInterval(intervalId);
+                intervalId = setInterval(() => game.next(), 50);
             });
 
             document.getElementById('stopButton').addEventListener('click', function () {
                 // Implement your stop game logic here
+                clearInterval(intervalId);
             });
         };
     </script>
