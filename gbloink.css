@@ -1,29 +1,77 @@
-
 body {
-    font-family:Sans;
-    font-color:#333333;
+    font-family: Sans;
+    color: #333333;
 }
 
 #controls {
-    margin:3px;
-    padding:3px;
-    /* border:1px solid #000000; */
+    margin: 3px;
+    padding: 3px;
 }
 
 #control_right {
-    margin:3px;
-    padding:3px;
+    margin: 3px;
+    padding: 3px;
 }
 
 .control_bar {
-    border:1px solid #cccccc;
-    margin:2px; 
+    border: 1px solid #cccccc;
+    margin: 2px;
 }
+
+ 
+
 
 #redcontrol .control_bar { background-color:#ff0000; }
 #greencontrol .control_bar { background-color:#00ff00; }
 #bluecontrol .control_bar { background-color:#0000ff; }
+ 
 
 
 
+nav {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    background-color: #333;
+    color: white;
+}
 
+nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;    
+}
+
+nav img {
+    height: 39px;
+    margin-right: 10px;
+}
+
+
+#play-area {
+    flex: 1;
+}
+
+#controls {
+    flex: 1;
+}
+
+main {
+    display: flex;
+}
+
+#play-area {
+    flex: 2;
+}
+
+#controls {
+    flex: 1;
+}
+
+/* Responsive design for narrow screens */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+}
+ 
