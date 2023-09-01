@@ -30,42 +30,43 @@
     <main>
     
         <section id="play-area">
-            <canvas id="canvasId" width="700" height="400"></canvas>
+            <canvas id="canvasId" width="800" height="400"></canvas>
+
         </section>
             
         <section id="controls">
-            <table>
-                <tr>
-                    <th>Speed</th>
-                    <th>Volume</th>
-                    <th>Instrument</th>
-                    <th>Decay</th>
-                </tr>
-                <tr>
-                    <td class="red"><canvas id="redball_speed" class="control_bar" width="170" height="20"></canvas></td>
-                    <td class="red"><canvas id="redball_volume" class="control_bar" width="170" height="20"></canvas></td>
-                    <td class="red"><canvas id="redball_instrument" class="control_bar" width="170" height="20"></canvas></td>
-                    <td class="red"><canvas id="redball_delay" class="control_bar" width="170" height="20"></canvas></td>
-                </tr>
-                <tr>
-                    <td class="green"><canvas id="greenball_speed" class="control_bar" width="170" height="20"></canvas></td>
-                    <td class="green"><canvas id="greenball_volume" class="control_bar" width="170" height="20"></canvas></td>
-                    <td class="green"><canvas id="greenball_instrument" class="control_bar" width="170" height="20"></canvas></td>
-                    <td class="green"><canvas id="greenball_delay" class="control_bar" width="170" height="20"></canvas></td>
-                </tr>
-                <tr>
-                    <td class="blue"><canvas id="blueball_speed" class="control_bar" width="170" height="20"></canvas></td>
-                    <td class="blue"><canvas id="blueball_volume" class="control_bar" width="170" height="20"></canvas></td>
-                    <td class="blue"><canvas id="blueball_instrument" class="control_bar" width="170" height="20"></canvas></td>
-                    <td class="blue"><canvas id="blueball_delay" class="control_bar" width="170" height="20"></canvas></td>
-                </tr>
-
-            </table>
-            <h4>Control</h4>
             <div>
                 <button id="startButton"><img src="img/play.png" /></button>
                 <button id="stopButton"><img src="img/pause.png" /></button>
             </div>
+            <table>
+                <tr>
+                    <th>Speed</th>
+                    <th>Instrument</th>
+                    <th>Volume</th>                    
+                    <th>Decay</th>
+                </tr>
+                <tr>
+                    <td class="red"><canvas id="redball_speed" class="control_bar" width="170" height="20"></canvas></td>
+                    <td class="red"><canvas id="redball_instrument" class="control_bar" width="170" height="20"></canvas></td>
+                    <td class="red"><canvas id="redball_volume" class="control_bar" width="170" height="20"></canvas></td>            
+                    <td class="red"><canvas id="redball_delay" class="control_bar" width="170" height="20"></canvas></td>
+                </tr>
+                <tr>
+                    <td class="green"><canvas id="greenball_speed" class="control_bar" width="170" height="20"></canvas></td>
+                    <td class="green"><canvas id="greenball_instrument" class="control_bar" width="170" height="20"></canvas></td>
+                    <td class="green"><canvas id="greenball_volume" class="control_bar" width="170" height="20"></canvas></td>                    
+                    <td class="green"><canvas id="greenball_delay" class="control_bar" width="170" height="20"></canvas></td>
+                </tr>
+                <tr>
+                    <td class="blue"><canvas id="blueball_speed" class="control_bar" width="170" height="20"></canvas></td>
+                    <td class="blue"><canvas id="blueball_instrument" class="control_bar" width="170" height="20"></canvas></td>
+                    <td class="blue"><canvas id="blueball_volume" class="control_bar" width="170" height="20"></canvas></td>                    
+                    <td class="blue"><canvas id="blueball_delay" class="control_bar" width="170" height="20"></canvas></td>
+                </tr>
+
+            </table>
+
             <br />&nbsp;<br />
             <div>
                 <input type="radio" checked name="scale" value="major" onClick="noteCalculator.setCurrent('major');" />Major<br />

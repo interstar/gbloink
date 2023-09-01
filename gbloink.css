@@ -36,6 +36,7 @@ nav {
     padding: 1em;
     background-color: #333;
     color: white;
+    width=100%;
 }
 
 nav a {

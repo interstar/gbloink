@@ -321,7 +321,7 @@ class ControlBar {
 // Class representing the game
 class Game {
     constructor(canvasId, MIDI) {
-        this.canvas = new Html5Canvas(canvasId, 600, 400);
+        this.canvas = new Html5Canvas(canvasId, 800, 400);
         this.MIDI = MIDI;
         this.balls = [
             new Ball(200, 200, '#ff0000', this.MIDI),
@@ -402,7 +402,7 @@ class Game {
         this.canvas.canvas.addEventListener('mouseup', e => mouseUp(e));
 
         // preset blocks
-        for (let i = 0; i <= 20; i++) {
+        for (let i = 0; i <= 30; i++) {
             this.userClicked(i * 30, Math.floor(50 + Math.random() * 50));
             this.userClicked(i * 30, Math.floor(300 + Math.random() * 50));
         }
