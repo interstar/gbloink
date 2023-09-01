@@ -26,7 +26,9 @@ body {
 #bluecontrol .control_bar { background-color:#0000ff; }
  
 
-
+.red { background-color: #ff0000; }
+.green { background-color: #00ff00; }
+.blue { background-color: #0000ff; }
 
 nav {
     display: flex;
@@ -48,24 +50,27 @@ nav img {
 }
 
 
-#play-area {
-    flex: 1;
-}
-
-#controls {
-    flex: 1;
-}
+ 
 
 main {
-    display: flex;
+    display: block;
 }
 
 #play-area {
-    flex: 2;
+    flex: none;
 }
 
 #controls {
-    flex: 1;
+    flex: none;
+}
+
+#container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#play-area {
+    text-align: center;
 }
 
 /* Responsive design for narrow screens */

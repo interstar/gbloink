@@ -312,6 +312,7 @@ class Block {
 // Class representing a control bar
 class ControlBar {
     constructor(id, mouseUpCallback) {
+        console.log("ControlBar for "+id);
         this.canvas = document.getElementById(id);
         this.canvas.addEventListener('mouseup', mouseUpCallback);
     }
